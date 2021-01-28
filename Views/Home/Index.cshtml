@@ -1,0 +1,44 @@
+﻿@model SubmitModel
+
+@using (Html.BeginForm("Submit", "Home", FormMethod.Post))
+{
+<div style="text-align: left; width: 1000px" class="form-container">
+    <fieldset>
+        <legend>Enter Scan Information</legend>
+        <div>
+            @Html.Label("App Name:")
+            @Html.TextBoxFor(model => model.AppName)
+        </div>
+        @Html.ValidationMessageFor(model => model.AppName)
+
+        <br />
+        <div>
+            @Html.Label("URL:")
+            @Html.TextBoxFor(model => model.URL)
+        </div>
+        @Html.ValidationMessageFor(model => model.URL)
+        <br />
+        <div>
+            @Html.Label("Include:")
+            <br/>
+            @Html.Label("Cloud Storage")
+            @Html.CheckBoxFor(model => model.cbCloudStorage, new { @checked = "checked" })
+            @Html.Label("Legacy Software")
+            @Html.CheckBoxFor(model => model.cbSCA, new { @checked = "checked" })
+            @Html.Label("Legacy Crypto")
+            @Html.CheckBoxFor(model => model.cbCrypto, new { @checked = "checked" })
+            @Html.Label("Open TCP Ports")
+            @Html.CheckBoxFor(model => model.cbNMAP, new { @checked = "checked" })
+            @Html.Label("OWASP Top 10")
+            @Html.CheckBoxFor(model => model.cbOWASP, new { @checked = "checked" })
+        </div>
+        @Html.ValidationMessageFor(model => model.cbCloudStorage)
+        @Html.ValidationMessageFor(model => model.cbSCA)
+        @Html.ValidationMessageFor(model => model.cbCrypto)
+        @Html.ValidationMessageFor(model => model.cbNMAP)
+        @Html.ValidationMessageFor(model => model.cbOWASP)
+
+    </fieldset>
+    <button type="submit">Submit</button>
+</div>
+        }
